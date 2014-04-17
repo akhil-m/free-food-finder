@@ -1,6 +1,19 @@
 {% load bootstrap3 %}
 
-{% boostrap_css %}
-{% boostrap_javascript %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-<p>Hello world</p>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="padding-top:30px">
+        <div class="list-group">
+        {% for event in events %}
+            <a href="/event/{{event.id}}/" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ event.event_name }}</h4>
+                <p class="list-group-item-text">{{ event.event_description}}</p>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

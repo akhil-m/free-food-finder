@@ -28,6 +28,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPLATE_DIRS = (
+    '/Users/akhil/Documents/final_project/free_food/free_food_finder',
+)
 
 # Application definition
 

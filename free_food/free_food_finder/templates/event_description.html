@@ -1,0 +1,30 @@
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="padding-top:30px">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">{{ event.event_name }}</h3>
+		  	</div>
+			<div class="panel-body">
+				<p class="list-group-item-text">
+    				<strong>Time: </strong> {{ event.event_time }}
+    			</p>
+    			<p class="list-group-item-text">
+    				<strong>Date: </strong> {{ event.event_date }}
+    			</p>
+    			<p class="list-group-item-text">
+    				<strong>Location: </strong> {{ event.event_location }}
+    			</p>
+    			<p class="list-group-item-text">
+    				<strong>Info: </strong> {{ event.event_description }}
+    			</p>
+			 </div>
+		</div>
+	</div>
+    <div class="col-md-3"></div>
+</div>
