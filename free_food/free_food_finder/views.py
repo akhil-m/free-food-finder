@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render_to_response
+from models import Event
 
-# Create your views here.
+def events(request):
+    events = Event.objects.all() 
+    return render_to_response('templates/events.html', {'events'=events})
