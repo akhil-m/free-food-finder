@@ -1,0 +1,23 @@
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="padding-top:30px">
+        <h3>Filter events by</h3>
+        <div class="list-group">
+            <a href="/filter/all/" class="list-group-item">
+                <p class="list-group-item-text">All</p>
+            </a>
+            <a href="/filter/today/" class="list-group-item">
+                <p class="list-group-item-text">Today</p>
+            </a>
+            <a href="/filter/week/" class="list-group-item">
+                <p class="list-group-item-text">This Week</p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
