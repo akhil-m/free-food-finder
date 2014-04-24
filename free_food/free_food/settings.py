@@ -52,14 +52,14 @@ INSTALLED_APPS = (
     'kombu.transport.django',
     'djcelery',
     'bootstrap3',
+    'django.contrib.comments',
+    'django.contrib.sites',
     #'userena',
     #'guardian',
     #'easy_thumbnails',
     #'threadedcomments',
     #'django.contrib.comments',
 )
-
-COMMENTS_APP = 'threadedcomments'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -98,16 +98,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-
-ANONYMOUS_USER_ID = -1
-
-AUTH_PROFILE_MODULE = 'free_food_finder.Profile'
-
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
-
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
