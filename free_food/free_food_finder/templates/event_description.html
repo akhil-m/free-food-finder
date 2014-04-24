@@ -3,6 +3,7 @@
 {% load comments %}
 {% load bootstrap3 %}
 
+
 {% block content %}
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -22,6 +23,15 @@
 				<strong>Info: </strong> {{ event.event_description }}
 			</p>
 		 </div>
+         <div class="panel-footer">
+            {% if user.is_authenticated %}
+            <form class="post-form" action="" method="POST">
+                {% csrf_token %}
+                <input type="number" name="rating" id="some_id" class="rating" style="display:inline" />
+                <input type="submit" class="btn btn-default btn-sm" value="Add Rating" id="id_submit" style="float:right;position:relative;bottom:18px" />
+            </form>
+            {% endif %}
+        </div>
     </div>
 
     {% if user.is_authenticated %}

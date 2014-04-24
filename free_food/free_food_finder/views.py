@@ -12,7 +12,7 @@ def home(request):
 
 def events(request, query_type):
 	if query_type == 'all':
-		events = Event.objects.all() 
+		events = Event.objects.filter(event_date__gt=datetime.now) 
 	elif query_type == 'today':
 		events = Event.objects.filter(event_date = datetime.now)
 	elif query_type == 'week':
@@ -33,12 +33,16 @@ def event_description(request, event_id):
 
 	event = Event.objects.get(id=event_id)
 	if request.method == 'POST':
-		new_comment = Comment()
-		new_comment.event = event
-		new_comment.comment = request.POST['comment']
-		new_comment.save()
-		new_comment.user = request.user
-		new_comment.save()
+		if 'rating' in request.POST:
+			event.ratings.rate(user=request.user, score=request.POST['rating'])
+			event.save()
+		else:	
+			new_comment = Comment()
+			new_comment.event = event
+			new_comment.comment = request.POST['comment']
+			new_comment.save()
+			new_comment.user = request.user
+			new_comment.save()
 	return render_to_response('templates/event_description.html', 
 										dict(event=event), 
 										context_instance=RequestContext(request))
@@ -48,7 +52,7 @@ def register(request):
 		uf = UserForm(request.POST, prefix='user')
 		if uf.is_valid():
 			uf.save()
-			return redirect('home')
+			return redirect('registration_success')
 	else:
 		uf = UserForm(prefix='user')
 	return render_to_response('register.html', 

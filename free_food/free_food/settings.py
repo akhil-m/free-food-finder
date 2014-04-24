@@ -54,11 +54,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'django.contrib.comments',
     'django.contrib.sites',
-    #'userena',
-    #'guardian',
-    #'easy_thumbnails',
-    #'threadedcomments',
-    #'django.contrib.comments',
+    'ratings'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +101,6 @@ SITE_ID = 1
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = ( '/Users/akhil/Documents/final_project/free_food/free_food_finder/templates/javascript/', )
+
+ANONYMOUS_USER_ID = -1
