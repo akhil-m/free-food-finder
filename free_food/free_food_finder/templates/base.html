@@ -1,7 +1,7 @@
 {% load bootstrap3 %}
 
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript jquery=True %}
 
 {% block bootstrap3_extra_head %}
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -14,18 +14,23 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Free Food Finder</a>
     </div>
+  <form action="/search/" method="post" class="navbar-form navbar-left" role="search">
+    {% csrf_token %}
+      <div class="form-group">
+        <input type="text" name="query" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+  </form>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      	{% if user.is_authenticated %}
-      	<p class="navbar-text">Hello, {{ user.username }}</p>
-      	<li><a href="/user/logout_user">Logout</a></li>
-      	{% else %}
-      	<li><a href="/user/signin">Sign In</a></li>
-      	<li><a href="/user/register">Register</a></li>
-      	{% endif %}
-      </ul>
-    </div>
+  <ul class="nav navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+        <p class="navbar-text">Hello, {{ user.username }}</p>
+        <li><a href="/user/logout_user">Logout</a></li>
+        {% else %}
+        <li><a href="/user/signin">Sign In</a></li>
+        <li><a href="/user/register">Register</a></li>
+        {% endif %}
+    </ul>
   </div>
 </nav>
 

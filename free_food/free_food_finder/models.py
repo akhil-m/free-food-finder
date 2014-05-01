@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from ratings.models import Ratings
 
 class Event(models.Model):
     event_name = models.CharField(max_length=200)
@@ -9,7 +8,15 @@ class Event(models.Model):
     event_date = models.DateField()
     event_description = models.TextField()
     event_location = models.CharField(max_length=50)
-    ratings = Ratings()
+
+class Rating(models.Model):
+	score = models.IntegerField()
+	user = models.ForeignKey(User)
+	event = models.ForeignKey(Event)
+
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=100)
+    event = models.ManyToManyField(Event)
 
 class UserForm(ModelForm):
     class Meta:

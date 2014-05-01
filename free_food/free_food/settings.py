@@ -54,7 +54,6 @@ INSTALLED_APPS = (
     'bootstrap3',
     'django.contrib.comments',
     'django.contrib.sites',
-    'ratings'
 )
 
 MIDDLEWARE_CLASSES = (
